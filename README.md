@@ -1,209 +1,205 @@
 
-# 📬 Artificial Intelligence Email Classifier Project
 
-**A machine learning system for classifying emails into Spam vs Ham using text processing and multiple classification models.**
+# 📬 Artificial Intelligence Email Classifier
 
-This project demonstrates a complete NLP classification pipeline — from raw text preprocessing to model training, evaluation, and performance comparison.
+A machine learning-based NLP system that classifies emails as **Spam** or **Ham** using statistical and neural classification models.
+
+This project implements an end-to-end text classification pipeline — from preprocessing raw email text to feature engineering, model training, and performance evaluation.
 
 ---
 
 ## 🔍 Project Overview
 
-Email spam filtering and classification is a core problem in natural language processing and cybersecurity. This project builds a machine learning-based classifier that automatically distinguishes **spam** emails from genuine (ham) emails using statistical and neural models.
+Spam detection is a foundational problem in natural language processing and cybersecurity. This project builds and compares multiple supervised learning models to automatically classify email messages based on textual content.
 
-The solution includes:
+The system includes:
 
-* Text preprocessing and feature extraction
-* Multiple model implementations and comparison
-* Metrics-based evaluation of classification performance
-
-**Primary models used:**
-✔ Multinomial Naive Bayes
-✔ Bernoulli Naive Bayes
-✔ Multi-Layer Perceptron (MLP) Classifier
-(All standard supervised ML algorithms suitable for text classification) ([GitHub][1])
+* Text preprocessing and cleaning
+* Feature extraction using Bag-of-Words
+* Supervised classification models
+* Quantitative performance evaluation
 
 ---
 
-## 🧠 Problem Statement
+## 🧠 Problem Definition
 
-Email communication is ubiquitous, yet filtering unwanted spam messages remains a persistent challenge. Efficient spam classifiers support:
+Given the raw text of an email:
 
-✔ Email security
-✔ User experience
-✔ Automated filtering
-✔ Reducing phishing and malicious messages
+> Classify it as either **SPAM** or **HAM (not spam)**.
 
-This project demonstrates an end-to-end machine learning pipeline to solve the binary classification task:
-
-> *“Given the text of an email, classify it as SPAM or HAM (not spam).”* ([GitHub][1])
+The challenge lies in transforming unstructured text into meaningful numerical representations that machine learning algorithms can learn from.
 
 ---
 
-## 🚀 Key Features & Technical Scope
+## 🛠 Technical Implementation
 
-### ✅ Data Processing
+### 1️⃣ Data Preprocessing
 
-* Removes irrelevant columns
-* Encodes labels (`spam` → 1, `ham` → 0)
-* Generates additional analytical features (e.g., message length)
-* Converts text to numerical vectors using **CountVectorizer (Bag of Words)** ([GitHub][1])
-
----
-
-### ✅ Machine Learning Models
-
-| Model                       | Type                       | Strength                                     |               |
-| --------------------------- | -------------------------- | -------------------------------------------- | ------------- |
-| **Bernoulli Naive Bayes**   | Probabilistic Classifier   | Effective for binary/boolean text features   |               |
-| **Multinomial Naive Bayes** | Probabilistic Classifier   | Well-suited to frequency-based text features |               |
-| **MLP Classifier**          | Feedforward Neural Network | Captures non-linear patterns                 | ([GitHub][1]) |
-
-Each model is trained and evaluated to compare performance using accuracy, precision, recall, and F1-score. ([GitHub][1])
+* Removal of irrelevant columns
+* Label encoding (`spam → 1`, `ham → 0`)
+* Text cleaning
+* Feature augmentation (e.g., message length analysis)
 
 ---
 
-## 🛠 Machine Learning Workflow
+### 2️⃣ Feature Engineering
 
-The end-to-end process implemented in the notebook includes:
+Text is converted into numerical vectors using:
 
-1. **Loading & Cleaning Data**
-   Remove noise and irrelevant metadata.
+**CountVectorizer (Bag of Words model)**
 
-2. **Label Encoding**
-   Convert textual categories to numeric classes.
+This approach:
 
-3. **Feature Extraction – Bag of Words**
-   Represent text as numeric vectors.
-
-4. **Train/Test Split**
-   Standard split for model evaluation.
-
-5. **Model Training & Evaluation**
-   Train classifiers and evaluate on test data with metrics.
-
-6. **Performance Comparison**
-   Compare models via accuracy and confusion matrices. ([GitHub][1])
+* Represents word frequency
+* Creates a sparse feature matrix
+* Enables probabilistic and neural models to operate on text
 
 ---
 
-## 📈 Results Summary
+### 3️⃣ Models Implemented
 
-* All models show **high classification performance** on the dataset.
-* Naive Bayes classifiers perform extremely well given the textual feature representation.
-* Neural network (MLP) provides competitive results, validating non-linear learning capability. ([GitHub][1])
+| Model                       | Type           | Why Used                                          |
+| --------------------------- | -------------- | ------------------------------------------------- |
+| **Multinomial Naive Bayes** | Probabilistic  | Strong baseline for frequency-based text features |
+| **Bernoulli Naive Bayes**   | Probabilistic  | Effective for binary word presence features       |
+| **MLP Classifier**          | Neural Network | Captures non-linear relationships in text         |
 
-> The use of strong statistical baselines like Naive Bayes is appropriate given the problem’s text distribution and class imbalance — a common technique in NLP classification tasks. ([Wikipedia][2])
-
----
-
-## 🛠 Tech Stack & Tools
-
-| Category      | Tools                          |               |
-| ------------- | ------------------------------ | ------------- |
-| Language      | Python                         |               |
-| Notebook      | Jupyter                        |               |
-| NLP           | Scikit-learn (CountVectorizer) |               |
-| ML Models     | Naive Bayes, MLPClassifier     |               |
-| Data Handling | pandas, NumPy                  |               |
-| Visualization | matplotlib, seaborn            | ([GitHub][1]) |
+Each model is trained and evaluated on a train/test split for fair comparison.
 
 ---
 
-## 🧪 Evaluation Metrics
+## 📊 Evaluation Metrics
 
-Typically, classification performance is measured using:
+Model performance is evaluated using:
 
-| Metric        | Purpose                       |               |
-| ------------- | ----------------------------- | ------------- |
-| **Accuracy**  | Overall correctness           |               |
-| **Precision** | Spam detection exactness      |               |
-| **Recall**    | Success at identifying spam   |               |
-| **F1 Score**  | Balance of precision & recall | ([GitHub][1]) |
+* **Accuracy**
+* **Precision**
+* **Recall**
+* **F1 Score**
+* **Confusion Matrix**
 
-Reporting these metrics provides **interpretability and reliability**, both critical in ML model assessment.
+These metrics provide insight into:
 
----
-
-## 🧩 Skills Demonstrated
-
-This project highlights:
-
-🎯 Natural Language Processing (NLP) fundamentals
-🎯 Feature Engineering for text data
-🎯 Supervised machine learning model training
-🎯 Model evaluation and comparison
-🎯 Practical dataset handling and experimentation
-🎯 Quick prototyping in Jupyter Notebook
-
-These are directly relevant to roles in:
-
-* **Machine Learning Engineering**
-* **AI Engineering**
-* **Data Science**
-* **Software Engineering (with ML focus)**
-* **Natural Language Processing roles**
+* False positive rates (spam misclassification)
+* False negative rates (missed spam)
+* Overall classification reliability
 
 ---
 
-## 🧠 Why Recruiters Should Care
+## 🏗 ML Workflow
 
-This is not just a classification script — it shows:
+```
+Raw Email Dataset
+        │
+        ▼
+Text Cleaning & Label Encoding
+        │
+        ▼
+Feature Extraction (Bag of Words)
+        │
+        ▼
+Train/Test Split
+        │
+        ▼
+Model Training
+        │
+        ▼
+Performance Evaluation
+```
 
-✔ End-to-end ML pipeline thinking
-✔ Data preprocessing best practices
-✔ Comparative evaluation of models
-✔ Applied NLP techniques
-✔ Clear result interpretation
-
-These are real skills companies look for in **ML, AI, and NLP roles.**
+This reflects a standard, production-style supervised ML pipeline.
 
 ---
 
-## 🧾 Repository Structure
+## 🛠 Tech Stack
+
+* **Python**
+* **Jupyter Notebook**
+* **Scikit-learn**
+* **Pandas**
+* **NumPy**
+* **Matplotlib / Seaborn**
+
+---
+
+## 🧩 Engineering Strengths Demonstrated
+
+### For Machine Learning Roles
+
+* NLP preprocessing pipeline
+* Feature vectorization techniques
+* Baseline vs neural model comparison
+* Proper model evaluation
+
+### For AI Engineering Roles
+
+* Structured transformation of unstructured data
+* Applied text classification
+* Understanding of probabilistic vs neural approaches
+
+### For Software Engineering Roles
+
+* Organized workflow
+* Clear modular pipeline stages
+* Reproducible experimentation
+* Clean dataset handling
+
+---
+
+## 📈 Key Insights
+
+* Naive Bayes models perform strongly in text classification tasks due to independence assumptions aligning well with word-frequency representations.
+* Neural networks can capture more complex patterns but require careful evaluation to avoid overfitting.
+* Feature engineering significantly impacts classification performance.
+
+---
+
+## 📂 Repository Structure
 
 ```
 Artificial-Intelligence-Email-Classifier-Project/
 │
 ├── (23,24,27)_AIES_MINI_PROJECT_EMAIL_CLASSIFIER.ipynb
 ├── README.md
-└── (Dataset used inside notebook)
+└── Dataset (used within notebook)
 ```
 
 ---
 
 ## ▶ How to Run
 
-1. Clone the repo:
-
-```
+```bash
 git clone https://github.com/AtharvaThorat/Artificial-Intelligence-Email-Classifier-Project
-```
-
-2. Open the Notebook:
-
-```
+cd Artificial-Intelligence-Email-Classifier-Project
+pip install pandas numpy scikit-learn matplotlib seaborn
 jupyter notebook (23,24,27)_AIES_MINI_PROJECT_EMAIL_CLASSIFIER.ipynb
 ```
 
-3. Install required packages:
-
-```
-pip install pandas numpy scikit-learn matplotlib seaborn
-```
-
-4. Run all cells to reproduce the model training and evaluation.
+Run all cells sequentially to reproduce preprocessing, training, and evaluation.
 
 ---
 
-## 📬 About the Author
+## 🎯 Why This Project Matters
+
+This project demonstrates:
+
+* End-to-end NLP pipeline design
+* Applied machine learning in cybersecurity context
+* Comparative model experimentation
+* Practical understanding of evaluation metrics
+
+These are directly relevant to:
+
+* Machine Learning Engineer
+* AI Engineer
+* NLP Engineer
+* Software Engineer (ML-focused roles)
+
+---
+
+## 👨‍💻 Author
 
 **Atharva Thorat**
-Passionate about building applied AI and machine learning solutions.
-Focus areas include:
-
-* Machine Learning Models
-* Natural Language Processing
-* Data-Driven Decision Systems
-* Scalable ML pipelines
+Master’s in Computer Science – University of Southern California
+Focused on AI systems, machine learning pipelines, and applied NLP solutions.
 
